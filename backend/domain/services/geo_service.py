@@ -57,7 +57,13 @@ SADECE aşağıdaki JSON formatında yanıt ver. Ek açıklama veya giriş cüml
 
 ZORUNLU: Tüm metin değerleri Türkçe olmalıdır."""
 
+    @staticmethod
+    def _strip_fences(text: str) -> str:
+        m = re.search(r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL)
+        return m.group(1) if m else text
+
     def _extract_json(self, text: str) -> dict:
+        text = self._strip_fences(text)
         match = re.search(r"\{.*\}", text, re.DOTALL)
         if not match:
             raise ValueError("LLM yanıtında JSON bulunamadı")

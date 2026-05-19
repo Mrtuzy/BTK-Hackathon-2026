@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from adapters.inbound.analyze_controller import AnalyzeController
 from adapters.outbound.csv_parser_factory import CsvParserFactory
+from adapters.outbound.gemini_competitor_searcher import GeminiCompetitorSearcher
 from adapters.outbound.gemini_language_model import GeminiLanguageModel
 from adapters.outbound.playwright_scraper import PlaywrightScraper
 from application.analysis_pipeline import AnalysisPipeline
@@ -24,6 +25,7 @@ app.add_middleware(
 scraper = PlaywrightScraper(headless=config.playwright_headless)
 llm = GeminiLanguageModel(api_key=config.gemini_api_key)
 csv_parser = CsvParserFactory()
+competitor_searcher = GeminiCompetitorSearcher(api_key=config.gemini_api_key)
 
 # Inject into domain services
 geo_service = GeoAnalysisService(llm=llm)
@@ -33,9 +35,11 @@ action_service = ActionService(llm=llm)
 # Compose application pipeline
 pipeline = AnalysisPipeline(
     scraper=scraper,
+    llm=llm,
     geo_service=geo_service,
     correlation_service=correlation_service,
     action_service=action_service,
+    competitor_searcher=competitor_searcher,
 )
 
 # Wire inbound adapter

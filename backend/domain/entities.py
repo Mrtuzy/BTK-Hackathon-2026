@@ -55,3 +55,4 @@ class AnalysisResult:
     actions: list[ActionItem]
     used_fixture: bool
     combined_insight: str = ""
+    competitor_insight: str = ""

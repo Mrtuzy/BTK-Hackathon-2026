@@ -14,5 +14,6 @@ class PipelineState(TypedDict):
     correlation_report: CorrelationReport | None
     actions: list[ActionItem] | None
     combined_insight: str
+    competitor_insight: str
     used_fixture: bool
     error: str | None

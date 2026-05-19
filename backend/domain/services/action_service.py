@@ -147,13 +147,19 @@ class ActionService:
             "  }",
             "]",
             "",
-            "3-6 aksiyon üret. Önce critical, sonra important, sonra improvement sıralamasını koru.",
+            "En az 3 aksiyon üret. Önce critical, sonra important, sonra improvement sıralamasını koru.",
             "ZORUNLU: Tüm metin değerleri Türkçe olmalıdır.",
         ])
 
         return "\n".join(blocks)
 
+    @staticmethod
+    def _strip_fences(text: str) -> str:
+        m = re.search(r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL)
+        return m.group(1) if m else text
+
     def _extract_json_array(self, raw: str) -> list[dict]:
+        raw = self._strip_fences(raw)
         match = re.search(r"\[.*\]", raw, re.DOTALL)
         if not match:
             raise ValueError("LLM yanıtında JSON dizisi bulunamadı")

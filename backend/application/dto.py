@@ -30,6 +30,7 @@ class AnalyzeResponse:
     funnel_drop_points: list[str] = field(default_factory=list)
     cost_per_conversion_avg: float | None = None
     combined_insight: str | None = None
+    competitor_insight: str | None = None
     high_return_keywords: list[dict] = field(default_factory=list)
     root_causes: list[str] = field(default_factory=list)
     total_impressions: int = 0

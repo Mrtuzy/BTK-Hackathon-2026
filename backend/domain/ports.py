@@ -17,6 +17,12 @@ class ILanguageModel(ABC):
         """Returns raw text. Caller is responsible for parsing."""
 
 
+class ICompetitorSearcher(ABC):
+    @abstractmethod
+    def search(self, product_title: str, platform_hint: str) -> str:
+        """Returns competitor analysis text. Never raises."""
+
+
 class ICsvParser(ABC):
     @abstractmethod
     def parse_ads(self, content: bytes) -> pd.DataFrame:

@@ -263,7 +263,8 @@ ZORUNLU: Tüm metin değerleri Türkçe olmalıdır."""
 
         raw = self._llm.generate(prompt)
         try:
-            match = re.search(r"\{.*\}", raw, re.DOTALL)
+            cleaned = re.sub(r"```(?:json)?\s*\n?(.*?)\n?```", r"\1", raw, flags=re.DOTALL)
+            match = re.search(r"\{.*\}", cleaned, re.DOTALL)
             if not match:
                 raise ValueError("LLM yanıtında JSON bulunamadı")
             return json.loads(match.group())

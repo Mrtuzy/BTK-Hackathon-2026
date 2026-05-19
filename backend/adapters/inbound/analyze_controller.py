@@ -69,6 +69,7 @@ class AnalyzeController:
             funnel_drop_points=corr.funnel_drop_points if corr else [],
             cost_per_conversion_avg=corr.cost_per_conversion_avg if corr else None,
             combined_insight=result.combined_insight or None,
+            competitor_insight=result.competitor_insight or None,
             high_return_keywords=corr.high_return_keywords if corr else [],
             root_causes=corr.root_causes if corr else [],
             total_impressions=corr.total_impressions if corr else 0,
