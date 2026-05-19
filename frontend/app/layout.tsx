@@ -13,8 +13,8 @@ const textFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "doThis",
-  description: "Profit leak detector for e-commerce sellers",
+  title: "doThis — E-ticaret Kâr Analizi",
+  description: "GEO görünürlük skoru, reklam israfı ve iade korelasyonunu tek analizde birleştiren yapay zeka platformu.",
 };
 
 export default function RootLayout({

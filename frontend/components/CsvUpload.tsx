@@ -135,9 +135,9 @@ export default function CsvUpload({ onAdCsv, onReturnsCsv }: CsvUploadProps) {
     <div className="grid gap-3 sm:grid-cols-2">
       <UploadZone
         id="ad-csv"
-        label="Reklam Raporu"
+        label="Reklam Verisi"
         icon={adIcon}
-        hint="Google Ads, Meta, Trendyol"
+        hint="Google Ads · Meta Ads · Trendyol"
         file={adFile}
         error={null}
         onFile={handleAdFile}
@@ -146,7 +146,7 @@ export default function CsvUpload({ onAdCsv, onReturnsCsv }: CsvUploadProps) {
         id="returns-csv"
         label="İade Raporu"
         icon={returnsIcon}
-        hint="Trendyol iade CSV"
+        hint="Trendyol iade raporu CSV"
         file={returnsFile}
         error={null}
         onFile={handleReturnsFile}

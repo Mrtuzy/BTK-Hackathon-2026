@@ -55,6 +55,7 @@ export interface AnalyzeResponse {
   funnel_drop_points: string[];
   cost_per_conversion_avg: number | null;
   combined_insight: string | null;
+  competitor_insight: string | null;
   high_return_keywords: HighReturnKeyword[];
   root_causes: string[];
   total_impressions: number;
